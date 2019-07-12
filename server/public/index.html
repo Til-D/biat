@@ -1,0 +1,325 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<title>BIAT</title>
+		<!-- <link rel="stylesheet" href="http://fonts.googleapis.com/css?family=Open+Sans:400,700">
+		<link rel="stylesheet" href="/stylesheets/jquery-ui-1.9.2.custom.min.css"> -->
+		<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<link rel="stylesheet" href="/jquery-ui-1.12.1.custom/jquery-ui.min.css">
+		<link rel="stylesheet" href="/stylesheets/style.css">
+	</head>
+	<body>
+		<article>
+			<header>
+				<h1>(Brief) Implicit Association Test</h1>
+			</header>
+			
+			<section class="step step_start">
+				<h2>Participant and Experiment Group</h2>
+				<div class="cf">
+					<p>To be filled in by the experimenter.</p>
+					<section class="first">
+						<h3>Participant ID</h3>
+						<!-- <h4><label for="create_proband">Create new participant</label></h4> -->
+						<form>
+							<input type="text" id="participant_id" required>
+							<!-- <input type="submit" value="Create"> -->
+						</form>
+						<!-- <h4>Starting task</h4>
+						<form class="list">
+							<div>
+								<div>
+									<input type="radio" name="starting_task" id="starting_task_1" value="1"> 
+									<label for="starting_task_1">Task I</label>
+								</div>
+								<div>
+									<input type="radio" name="starting_task" id="starting_task_2" value="2"> 
+									<label for="starting_task_2">Task II</label>
+								</div>
+							</div>
+						</form> -->
+					</section>
+					<section class="second">
+						<h3>Experiment Group</h3>
+						<!-- <h4><label for="create_task">Create new task</label></h4>
+						<form>
+							<input type="text" id="create_task" required>
+							<input type="submit" value="Create">
+						</form> -->
+						<!-- <h4>Choose task</h4> -->
+						<form class="list">
+							<div>
+								<div>
+									<input type="radio" name="experiment_group" id="group_1" value="1">
+									<label for="group_1">Group 1</label>
+								</div>
+								<div>
+									<input type="radio" name="experiment_group" id="group_2" value="2">
+									<label for="group_2">Group 2</label>
+								</div>
+								<!-- <div>
+									<input type="radio" name="experiment_group" id="group_3" value="3">
+									<label for="group_3">Group 3</label>
+								</div>
+								<div>
+									<input type="radio" name="experiment_group" id="group_4" value="4">
+									<label for="group_4">Group 4</label>
+								</div>
+								<div>
+									<input type="radio" name="experiment_group" id="group_5" value="5">
+									<label for="group_5">Group 5</label>
+								</div>
+								<div>
+									<input type="radio" name="experiment_group" id="group_6" value="6">
+									<label for="group_6">Group 6</label>
+								</div> -->
+							</div>
+						</form>
+					</section>
+				</div>
+				<hr />
+				<div class="alert alert-warning" role="alert"></div>
+				<button>Start</button>
+				<!-- <p class="go_back">or go <a href="#">back to the overview page</a></p> -->
+			</section>
+
+			<section class="step step_pre_study">
+				<h2>Pre-Study: BIAT Pairs</h2>
+				<div class="cf">
+					<p>The implicit association test measures the differential association of two target concepts with an attribute. By measuring the time it takes you to categorize concepts and attributes, implicit biases can emerge. Under a concept umbrella, such as <i>Conservative</i> vs. <i>Liberal</i>, for example, nouns classically associated with each need to be categorized. This pre-study aims at 1) introducing the mechanism of the brief version of the implicit association test (BIAT) and 2) collecting feedback on the word pair associations.
+					<br /><br />
+					Thanks for helping out! Feel free to provide some details (optional) and select your BIAT category. If you are interested in participating in the follow-up studies and/or the results of this research, you can leave us your email address.
+					</p>
+					<section class="first">
+						
+						<h3>For BIAT Newbies:</h3>
+						<button type="button" class="btn-warmup">Warmup Round</button>
+
+						<h3>Topic Selection</h3>
+
+						<div class="input-group mb-3">
+						  <div class="input-group-prepend">
+						    <label class="input-group-text" for="biat-selection-dropdown">BIAT</label>
+						  </div>
+						  <select class="custom-select" id="biat-selection-dropdown">
+						    <option selected>Choose...</option>
+						  </select>
+						</div>
+
+					  	<!-- <div class="form-check">
+							<input type="checkbox" class="form-check-input" id="warmup-check">
+							<label class="form-check-label" for="warmup-check">include warmup round (Flowers vs. Insects)</label>
+						</div> -->
+						
+					</section>
+					<section class="second">
+
+						<h3>Demographics (Optional)</h3>
+						<input type="text" id="pre_study_participant_id" placeholder="Name">
+
+						<input type="text" id="pre_study_participant_age" placeholder="Age">
+						
+						<input type="text" id="pre_study_participant_background" placeholder="Profession/Background">
+
+						<input type="text" id="pre_study_participant_email" placeholder="Email">
+	
+						<h4>Gender</h4>
+						<form class="list">
+							<div>
+								<div>
+									<input type="radio" name="pre_study_gender" id="pre_study_gender_f" value="female">
+									<label for="pre_study_gender_f">Female</label>
+								</div>
+								<div>
+									<input type="radio" name="pre_study_gender" id="pre_study_gender_m" value="male">
+									<label for="pre_study_gender_m">Male</label>
+								</div>
+								<div>
+									<input type="radio" name="pre_study_gender" id="pre_study_gender_o" value="other">
+									<label for="pre_study_gender_o">Other</label>
+								</div>
+								<div>
+									<input type="radio" name="pre_study_gender" id="pre_study_gender_x" value="none">
+									<label for="pre_study_gender_x">I'd rather not say</label>
+								</div>
+							</div>
+						</form>
+					
+					</section>
+				</div>
+				<hr />
+				<div class="alert alert-warning" role="alert"></div>
+				<button class="btn-start">Start</button>
+				<!-- <p class="go_back">or go <a href="#">back to the overview page</a></p> -->
+			</section>
+
+			<section class="step step_BIAT">
+				<h2 id="step_BIAT_header" style="display:none">Instructions</h2>
+
+				<div id="BIAT_test" style="display:none">
+					<div id="BIAT_top">
+						<p id="attributeStimuliCategory" class="attributeClass">Category</p>
+						<p>or</p>
+						<p id="attitudeStimuliCategory" class="attitudeClass">Attitude</p>
+					</div>
+
+					<p id="BIAT_instructions"></p>
+					<p id="BIAT_word"></p>
+					<div class="alert alert-danger" role="alert">X</div>
+				</div>
+
+			</section>
+
+			<section class="step pre_study_evaluation">
+				<h2>BIAT Pair Evaluation</h2>
+
+					<p>Done! Thanks for trying out this BIAT on <b><span class="stimulus_pair"></span></b>! Did you encounter some words of which you thought they did not fit? Do you have suggestions for a better choice? Please let us know below.</p>
+
+					<input type="hidden" value="" id="focalKey">
+					<input type="hidden" value="" id="nonFocalKey">
+					<input type="hidden" value="" id="focalAttributes">
+					<input type="hidden" value="" id="nonfocalAttributes">
+					
+					<section class="evaluation">
+						<h3 class="attribute_focal_category">Focal Category</h3>
+						<p><b>Attributes:</b> <span class="attribute_focal_stimuli">Stimuli...<span></p>
+
+						<div class="left">
+							<p>How well do you think these attributes fit the category '<span class="attribute_focal_category"></span>'?</p>
+							<div class="likert" id="attribute_focal_category_fit"></div>
+						
+
+							<p class="input-heading">The following attributes were out of place:</p>
+							<input type="text" id="focal_blacksheep" placeholder="">
+
+							<p class="input-heading">Any suggestions for better attributes?</p>
+							<input type="text" id="focal_wishlist" placeholder="">
+						</div>
+					</section>
+
+					<section class="evaluation">
+						<h3 class="attribute_nonfocal_category">Non-focal Category</h3>
+						<p><b>Attributes:</b> <span class="attribute_nonfocal_stimuli">Non-Stimuli...</span></p>
+
+						<div class="left">
+							<p>How well do you think these attributes fit the category '<span class="attribute_nonfocal_category"></span>'?</p>
+							<div class="likert" id="attribute_nonfocal_category_fit"></div>
+						
+
+							<p class="input-heading">The following attributes were out of place:</p>
+							<input type="text" id="nonfocal_blacksheep" placeholder="">
+
+							<p class="input-heading">Any suggestions for better attributes?</p>
+							<input type="text" id="nonfocal_wishlist" placeholder="">
+						</div>
+
+						<hr />
+						<div class="left">
+							<h4>Any other comments or feedback?</h4>
+							<textarea id="feedback_BIAT_pairs"></textarea>
+						</div>
+					</section>
+
+					<div class="alert alert-danger" role="alert">X</div>
+					<button class="btn-submit">Submit</button>
+
+			</section>
+
+			<section id="BIAT_end" class="step step_BIAT_end">
+				<p><strong>Notify the experimenter</strong> that you are ready to continue with the next task. Then, come back and fill in the next questionnaire.</p>
+				<button>Next</button>
+			</section>
+
+			<section class="step step_demographics">
+				<h2>Demographics</h2>
+				<div class="cf">
+					<h3>Welcome to the experiment!</h3>
+					<p>Please fill in the following demographic information:</p>
+					<section class="first">
+						<h3>Age</h3>
+						<input type="text" id="age" required>
+					</section>
+					<section class="second">
+						<h3>Gender</h3>
+						<form class="list">
+							<div>
+								<div>
+									<input type="radio" name="gender" id="gender_f" value="female">
+									<label for="gender_f">Female</label>
+								</div>
+								<div>
+									<input type="radio" name="gender" id="gender_m" value="male">
+									<label for="gender_m">Male</label>
+								</div>
+								<div>
+									<input type="radio" name="gender" id="gender_o" value="other">
+									<label for="gender_o">Other</label>
+								</div>
+								<div>
+									<input type="radio" name="gender" id="gender_x" value="none">
+									<label for="gender_x">I'd rather not say</label>
+								</div>
+							</div>
+						</form>
+					</section>
+					<section class="third">
+						<h3>Profession &amp; Background</h3>
+						<input type="text" id="profession" required>
+					</section>
+				</div>
+				<hr />
+				<div class="alert alert-warning" role="alert"></div>
+				<button>Next</button>
+			</section>
+
+			<section class="step step_reading_task">
+				<h2>What Airlines Fly the Boeing 737 Max 8</h2>
+				<p>The plane that crashed on Sunday outside Addis Ababa, Ethiopia, revived questions about a new Boeing model that is growing in popularity among airlines.</p>
+				
+				<p>The crash was the second in just five months involving the model, a Boeing 737 Max 8. Concerns first surfaced after a Lion Air flight crashed near Indonesia in October, killing all 189 people aboard.</p>
+						
+				<p>The 737 class is a workhorse for airlines worldwide, and the single-aisle 737 Max has been Boeing’s best-selling plane ever. More than 350 of the Max 8 planes are currently registered, and many more are on order.</p>
+						
+				<p>Max 8 planes flew more than 8,500 flights worldwide in the week beginning Feb. 25, according to Flightradar24, a flight tracking service.</p>
+						
+				<p>Two American carriers that use the planes heavily — Southwest Airlines and American Airlines — have said they will continue to fly them. But on Monday, China and Indonesia ordered their airlines to ground all of the Max 8 jets they operate. Some other carriers, including Cayman Airways and Comair, followed suit.</p>
+
+				<p>Investigators have not yet determined the cause of the Ethiopia crash, but they recovered both the flight data recorder and the cockpit voice recorder on Monday.</p>
+						
+				<p>Some circumstances of the crash, such as unusual altitude changes after takeoff, were similar to those in the Lion Air flight.</p>
+						
+				<p>Five months later, the causes of the Indonesian crash are still under investigation. But the tragedy revealed that Boeing and the United States Federal Aviation Administration determined that pilots did not need to be informed of changes to the Max 8’s flight control system, which may have contributed to the crash.</p>
+
+				<button>Next</button>
+			</section>
+				
+			<section class="step step_pre_study_warmup_done">
+				<h2>That's it!</h2>
+				<p>It's that easy! Now you're ready to select an attribute pair and give it a go!</p>
+				<div class="alert alert-warning" role="alert"></div>
+				<button class="bth-restart">Let's go!</button>
+			</section>
+
+			<section class="step step_pre_study_thanks">
+				<h2>That's it!</h2>
+				<p>Thanks for your participation! Feel free to try out another BIAT pair:</p>
+				<div class="alert alert-warning" role="alert"></div>
+				<button>Restart</button>
+			</section>
+			
+			<section class="step step_thanks">
+				<h2>That's it!</h2>
+				<div class="alert alert-warning" role="alert"></div>
+				<h4>Thanks for your participation!</h4>
+			</section>
+		</article>
+		
+		<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
+		<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js" integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1" crossorigin="anonymous"></script>
+		<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js" integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM" crossorigin="anonymous"></script>
+		<script src="/jquery-ui-1.12.1.custom/jquery-ui.min.js"></script>
+		<script src="/javascripts/BIAT.js"></script>
+		<script src="/javascripts/default.js"></script>
+	</body>
+</html>

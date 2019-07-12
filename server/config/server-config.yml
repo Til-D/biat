@@ -1,0 +1,4 @@
+default:
+  app-name: 'Brief Implicit Association Test (BIAT) Log Server'
+  version: 1.1
+  logDirectory: "/logs/"
