@@ -1,5 +1,4 @@
 # Brief Implicit Association Test (BIAT)
-========
 
 An implementation of the Brief Implicit Association Test (BIAT) including media content display and subjective feedback collection.
 
