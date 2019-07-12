@@ -1,7 +1,7 @@
 module.exports = {
   apps : [{
     name: 'biat-server',
-    script: './bin/www',
+    script: '/home/ubuntu/bin/www',
 
     // Options reference: https://pm2.io/doc/en/runtime/reference/ecosystem-file/
     args: '',
