@@ -4,6 +4,9 @@
 
 # TODO
 ====================
+[ ] put BIATs back in: 
+"STIMULI_PAIRS":[["Progressive", "Conservative"], ["Feminism", "Anti-feminism"], ["Man-made Climate Change", "Natural Climate Cycles"], ["Left Media", "Conservative Media"], ["Qualitative", "Quantitative Research"]],
+
 [x]	add survey question after reflecting on d-score: where do you roughly stand between the two issues, e.g.: Progressive [ ]  [ ]  [ ]  [ ]  [ ] Conservative
 [x] URL param to specific BIAT
 [x] demographics mandatory
@@ -71,3 +74,9 @@ v.2.5
 [x] added new stimulus category: left vs conservative media 
 [x] now works with images (as indicated in IMAGE_STIMULI)
 [x] added new stimulus cateogry: qualitative vs. quantitative research
+
+v.2.6 (special edition for CHI'20 Workshop)
+--------
+[x] reduced set of stimuli
+[x] reduced set of demographics
+[x] final survey shortened

@@ -21,11 +21,11 @@
         "Quantitative Research": ["Simplification", "Replicable", "Objective", "Comparable"]
     },
     "WARMUP_PAIR": ["Flowers", "Insects"],
-    "STIMULI_PAIRS":[["Progressive", "Conservative"], ["Feminism", "Anti-feminism"], ["Man-made Climate Change", "Natural Climate Cycles"], ["Left Media", "Conservative Media"], ["Qualitative", "Quantitative Research"]],
+    "STIMULI_PAIRS":[["Progressive", "Conservative"], ["Qualitative", "Quantitative Research"]],
     "IMAGE_STIMULI": ["Left Media", "Conservative Media"],
     "ATTITUDES": {
         "Good": ["Wonderful", "Best", "Superb", "Excellent"],
         "Bad": ["Awful", "Horrible", "Terrible", "Worst"]
     },
-    "VERSION": "2.5"
+    "VERSION": "2.6"
 }

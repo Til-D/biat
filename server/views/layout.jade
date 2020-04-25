@@ -99,29 +99,31 @@ html(lang='en')
               <label class="form-check-label" for="warmup-check">include warmup round (Flowers vs. Insects)</label>
               </div>
           section.second
-            h3 Demographics 
+            h3 Please provide a name: 
+            //- h3 Demographics 
             //- (Optional)
             //- input#pre_study_participant_id(type='text', placeholder='Name')
-            input#pre_study_participant_age(type='text', placeholder='Age')
-            input#pre_study_participant_background(type='text', placeholder='Profession/Background')
-            input#pre_study_participant_country(type='text', placeholder='Country')
-            input#pre_study_participant_zipcode(type='text', placeholder='Postcode')
-            input#pre_study_participant_email(type='text', placeholder='Email (Optional)')
-            h4 Gender
-            form.list
-              div
-                div
-                  input#pre_study_gender_f(type='radio', name='pre_study_gender', value='female')
-                  label.gender(for='pre_study_gender_f') Female
-                div
-                  input#pre_study_gender_m(type='radio', name='pre_study_gender', value='male')
-                  label.gender(for='pre_study_gender_m') Male
-                div
-                  input#pre_study_gender_x(type='radio', name='pre_study_gender', value='none')
-                  label.gender(for='pre_study_gender_x') I'd rather not say
-                div
-                  input#pre_study_gender_o(type='radio', name='pre_study_gender', value='other')
-                  input#pre_study_gender_other(type='text', placeholder='Prefer to self-describe')
+            //- input#pre_study_participant_age(type='text', placeholder='Age')
+            //- input#pre_study_participant_background(type='text', placeholder='Profession/Background')
+            //- input#pre_study_participant_country(type='text', placeholder='Country')
+            //- input#pre_study_participant_zipcode(type='text', placeholder='Postcode')
+            input#pre_study_participant_email(type='text', placeholder='Name')
+            //- input#pre_study_participant_email(type='text', placeholder='Email (Optional)')
+            //- h4 Gender
+            //- form.list
+            //-   div
+            //-     div
+            //-       input#pre_study_gender_f(type='radio', name='pre_study_gender', value='female')
+            //-       label.gender(for='pre_study_gender_f') Female
+            //-     div
+            //-       input#pre_study_gender_m(type='radio', name='pre_study_gender', value='male')
+            //-       label.gender(for='pre_study_gender_m') Male
+            //-     div
+            //-       input#pre_study_gender_x(type='radio', name='pre_study_gender', value='none')
+            //-       label.gender(for='pre_study_gender_x') I'd rather not say
+            //-     div
+            //-       input#pre_study_gender_o(type='radio', name='pre_study_gender', value='other')
+            //-       input#pre_study_gender_other(type='text', placeholder='Prefer to self-describe')
         hr
         .alert.alert-warning(role='alert')
         button.btn-start Start
@@ -138,7 +140,8 @@ html(lang='en')
           img#BIAT_img_stimulus
           .alert.alert-danger(role='alert') X
       
-      include includes/pre_study_survey.jade
+      //- include includes/pre_study_survey.jade
+      include includes/d_score_results.jade
 
       section#BIAT_end.step.step_BIAT_end
         p
