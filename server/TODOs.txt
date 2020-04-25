@@ -68,5 +68,6 @@ v.2.4 (to be published next) > 50 people study
 
 v.2.5 
 --------
-[x] added left vs conservative media stimuli
+[x] added new stimulus category: left vs conservative media 
 [x] now works with images (as indicated in IMAGE_STIMULI)
+[x] added new stimulus cateogry: qualitative vs. quantitative research

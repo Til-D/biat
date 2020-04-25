@@ -16,10 +16,12 @@
         "Man-made Climate Change": ["Emissions", "Consumerism", "Coal", "Drilling"],
         "Natural Climate Cycles": ["Natural", "Non-Sense", "Cycles", "Weather"],
         "Left Media": [{"name": "CNN", "img": "cnn.png"}, {"name": "The Independent", "img": "The-Independent-Logo.png"}, {"name": "The Guardian", "img": "theguardian.png"}, {"name": "The New Yorker", "img": "TheNYer.png"}],
-        "Conservative Media": [{"name": "Breitbart", "img": "breitbart.png"}, {"name": "Daily Mail", "img": "dailymail.png"}, {"name": "Fox", "img": "fox.png"}, {"name": "The Sun", "img": "thesun.png"}]
+        "Conservative Media": [{"name": "Breitbart", "img": "breitbart.png"}, {"name": "Daily Mail", "img": "dailymail.png"}, {"name": "Fox", "img": "fox.png"}, {"name": "The Sun", "img": "thesun.png"}],
+        "Qualitative": ["Dynamic", "Subjective", "Rich", "Individual"], 
+        "Quantitative Research": ["Simplification", "Replicable", "Objective", "Comparable"]
     },
     "WARMUP_PAIR": ["Flowers", "Insects"],
-    "STIMULI_PAIRS":[["Feminism", "Anti-feminism"], ["Progressive", "Conservative"], ["Man-made Climate Change", "Natural Climate Cycles"], ["Left Media", "Conservative Media"]],
+    "STIMULI_PAIRS":[["Progressive", "Conservative"], ["Feminism", "Anti-feminism"], ["Man-made Climate Change", "Natural Climate Cycles"], ["Left Media", "Conservative Media"], ["Qualitative", "Quantitative Research"]],
     "IMAGE_STIMULI": ["Left Media", "Conservative Media"],
     "ATTITUDES": {
         "Good": ["Wonderful", "Best", "Superb", "Excellent"],
