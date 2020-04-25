@@ -87,7 +87,7 @@
 			<section class="step step_pre_study">
 				<h2>Pre-Study: BIAT Pairs</h2>
 				<div class="cf">
-					<p>The implicit association test measures the differential association of two target concepts with an attribute. By measuring the time it takes you to categorize concepts and attributes, implicit biases can emerge. Under a concept umbrella, such as <i>Conservative</i> vs. <i>Liberal</i>, for example, nouns classically associated with each need to be categorized. This pre-study aims at 1) introducing the mechanism of the brief version of the implicit association test (BIAT) and 2) collecting feedback on the word pair associations.
+					<p>The implicit association test measures the differential association of two target concepts with an attribute. By measuring the time it takes you to categorize concepts and attributes, implicit biases can emerge. Under a concept umbrella, such as <i>Conservative</i> vs. <i>Progressive</i>, for example, nouns classically associated with each need to be categorized. This pre-study aims at 1) introducing the mechanism of the brief version of the implicit association test (BIAT) and 2) collecting feedback on the word pair associations.
 					<br /><br />
 					Thanks for helping out! Feel free to provide some details (optional) and select your BIAT category. If you are interested in participating in the follow-up studies and/or the results of this research, you can leave us your email address.
 					</p>
@@ -136,12 +136,12 @@
 									<label for="pre_study_gender_m">Male</label>
 								</div>
 								<div>
-									<input type="radio" name="pre_study_gender" id="pre_study_gender_o" value="other">
-									<label for="pre_study_gender_o">Other</label>
-								</div>
-								<div>
 									<input type="radio" name="pre_study_gender" id="pre_study_gender_x" value="none">
 									<label for="pre_study_gender_x">I'd rather not say</label>
+								</div>
+								<div>
+									<input type="radio" name="pre_study_gender" id="pre_study_gender_o" value="other">
+									<input type="text" id="pre_study_gender_other" placeholder="Prefer to self-describe">
 								</div>
 							</div>
 						</form>
@@ -174,7 +174,18 @@
 			<section class="step pre_study_evaluation">
 				<h2>BIAT Pair Evaluation</h2>
 
-					<p>Done! Thanks for trying out this BIAT on <b><span class="stimulus_pair"></span></b>! Did you encounter some words of which you thought they did not fit? Do you have suggestions for a better choice? Please let us know below.</p>
+					<p id="result"><p>
+
+					<section class="evaluation">
+
+						<div class="left">
+							<p>How well do you think this tendency fits your actual preference?</p>
+							<div class="likert" id="attribute_d_score_fit"></div>
+						</div>
+						
+					</section>
+
+					<p>Thanks for trying out this BIAT on <b><span class="stimulus_pair"></span></b>! Did you encounter some words of which you thought they did not fit? Do you have suggestions for a better choice? Please let us know below.</p>
 
 					<input type="hidden" value="" id="focalKey">
 					<input type="hidden" value="" id="nonFocalKey">

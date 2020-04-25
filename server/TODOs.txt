@@ -1,0 +1,72 @@
+# Cool new features
+====================
+[ ] byobias: create your own BIAT by providing categories and attributes > store in config file that can be subsequently loaded, export results
+
+# TODO
+====================
+[x]	add survey question after reflecting on d-score: where do you roughly stand between the two issues, e.g.: Progressive [ ]  [ ]  [ ]  [ ]  [ ] Conservative
+[x] URL param to specific BIAT
+[x] demographics mandatory
+[x] turk route: random sequence of BIAT topics
+[x] fix bug: double training before test period
+[x] show result screen after each BIAT
+[x] add turk codes to redeem after completion
+[x] if mturk: make survey fields mandatory
+[x] reset evaluation textfields after submit
+[x] add Uni logo and contact email
+[x] zipcode
+[x] single route: deactivate selection field
+[x] rewording
+[x] n.a. as mandatory (?) option
+[x] reset error/alert box
+[x] add instructions between test and training set
+[x] record IP address
+[x] add timestamps to logs, calculate task completion time
+
+# Version Control
+====================
+v1.*
+--------
+- anything test 
+
+v2.0: mturk
+--------
+- BLOCKS_PER_BIAT = 4
+- warmup_round_enabled = true
+- demographics required
+- feedback form enforced
+
+v2.1
+--------
+[x] instruction rewording
+[x] footnote for mandatory survey fields: (*) required fields, type 'n.a.' if not applicable.
+[x] reset error/alert box
+[x] add block progress (x/n) in instructions
+[x] record IP address
+
+v2.2 (published: 6.9.2019)
+--------
+[x] Anti-Feminism/Family > Obedience
+[x] Multiculturism/Chance > Migrant
+[x] add timestamps to logs, calculate task completion time
+[x] changed mturk code to: UnimelbBI4TV2
+
+v2.3 (published: 15.09.2019)
+--------
+[x] Anti-Feminism:Masculinity > Inequality
+[x] Natural-Cycles:Fearmongering > Weather
+[x] changed mturk code to: UnimelbBI4TV3
+
+v.2.4 (to be published next) > 50 people study
+--------
+[x] include participant_id in mturk code
+[x] grbs survey after BIAT (redirect changed from thanks to grbs)
+[x] OCEAN survey after grbs
+[x] changed mturk code to: UnimelbBI4TV4_<pId>
+[x] remove BIAT Australia/Multiculturism	
+[x] updated mturk instructions
+
+v.2.5 
+--------
+[x] added left vs conservative media stimuli
+[x] now works with images (as indicated in IMAGE_STIMULI)

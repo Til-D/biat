@@ -1,0 +1,81 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title= title
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
+    link(rel='stylesheet', href='/jquery-ui-1.12.1.custom/jquery-ui.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    article
+      header
+        h1 (Brief) Implicit Association Test
+      section
+        h2 Attitude Questionnaire
+        .cf
+          p
+            | This part of the study contains a series of questions to assess general attitudes. Some tips: 
+            br
+            ol.ocean
+              li Answer honestly, even if you don't like the answer.
+              li Your spontaneous answer is usually the most accurate.
+            
+          section.ocean
+            .left
+              each question in questions
+                p.ocean
+                  b !{question}
+                  table.table.grbs
+                    thead
+                      tr
+                        th Strongly Agree
+                        th 
+                        th(colspan='3')
+                          | Undecided
+                        th 
+                        th Strongly Disagree
+                    tbody
+                      tr
+                        td(scope='col') 
+                          input(type='radio', name=question, value='1')
+                        td(scope='col') 
+                          input(type='radio', name=question, value='2')
+                        td(scope='col') 
+                          input(type='radio', name=question, value='3')
+                        td(scope='col') 
+                          input(type='radio', name=question, value='4')
+                        td(scope='col') 
+                          input(type='radio', name=question, value='5')
+                        td(scope='col') 
+                          input(type='radio', name=question, value='6')
+                        td(scope='col') 
+                          input(type='radio', name=question, value='7')
+
+          .alert.alert-danger(role='alert')
+          button.btn-ocean-next Next
+    
+    script.
+        const step = !{step};
+        const nextStep= !{nextStep};
+        var get = {},
+            status = 'grbs';
+            get = [];
+            location.search.replace('?', '').split('&').forEach(function (val) {
+                split = val.split("=", 2);
+                get[split[0]] = split[1];
+            });
+            if(get["pId"] != null) {
+                var participant_id = get["pId"];
+            } else {
+                participant_id = 'grbs_' + String(Math.floor((Math.random() * 100) + 1)) + Date.now();
+            }
+
+    script(src='https://code.jquery.com/jquery-3.4.1.min.js', integrity='sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=', crossorigin='anonymous')
+    script(src='/javascripts/ocean.js')
+
+    script.
+        // if no more question, redirect
+        if(nextStep==0) {
+            console.log('redirect');
+            window.location.href='/mturk/ocean?pId='+get['pId'];
+        }

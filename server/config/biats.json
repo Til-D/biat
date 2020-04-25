@@ -1,0 +1,29 @@
+{
+    "STIMULI": {
+        "Flowers": ["Orchid", "Lily", "Violet", "Daisy"],
+        "Insects": ["Ant", "Locust", "Bee", "Wasp"],
+        "Asian": ["Curry", "Karate", "Beijing", "Sony"],
+        "American": ["Burger", "NFL", "Boston", "Microsoft"],
+        "Progressive": ["LGBTQ", "Multiculturalism", "Equality", "Opportunity"],
+        "Conservative": ["Tradition", "Stability", "Patriotism", "Responsibility"],
+        "Globalisation": ["Travel", "Markets", "Diversity", "Wealth"],
+        "Feminism": ["Empowerment", "Liberation", "Equality", "Progressive"],
+        "Anti-feminism": ["Inequality", "Housewife", "Traditional", "Obedience"],
+        "Veganism": ["Greens", "Tofu", "Produce", "Salad"], 
+        "Stoicism": ["Patience", "Calmness", "Acceptance", "Dispassion"], 
+        "Australian": ["Footy", "Kangaroo", "Outback", "Aussie"],
+        "Multiculturalism": ["Diversity", "Culture", "Migrant", "International"],
+        "Man-made Climate Change": ["Emissions", "Consumerism", "Coal", "Drilling"],
+        "Natural Climate Cycles": ["Natural", "Non-Sense", "Cycles", "Weather"],
+        "Left Media": [{"name": "CNN", "img": "cnn.png"}, {"name": "The Independent", "img": "The-Independent-Logo.png"}, {"name": "The Guardian", "img": "theguardian.png"}, {"name": "The New Yorker", "img": "TheNYer.png"}],
+        "Conservative Media": [{"name": "Breitbart", "img": "breitbart.png"}, {"name": "Daily Mail", "img": "dailymail.png"}, {"name": "Fox", "img": "fox.png"}, {"name": "The Sun", "img": "thesun.png"}]
+    },
+    "WARMUP_PAIR": ["Flowers", "Insects"],
+    "STIMULI_PAIRS":[["Feminism", "Anti-feminism"], ["Progressive", "Conservative"], ["Man-made Climate Change", "Natural Climate Cycles"], ["Left Media", "Conservative Media"]],
+    "IMAGE_STIMULI": ["Left Media", "Conservative Media"],
+    "ATTITUDES": {
+        "Good": ["Wonderful", "Best", "Superb", "Excellent"],
+        "Bad": ["Awful", "Horrible", "Terrible", "Worst"]
+    },
+    "VERSION": "2.5"
+}

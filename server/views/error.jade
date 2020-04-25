@@ -1,6 +1,17 @@
-extends layout
-
-block content
-  h1= message
-  h2= error.status
-  pre #{error.stack}
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title= title
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
+    link(rel='stylesheet', href='/jquery-ui-1.12.1.custom/jquery-ui.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    article
+      header
+        h1 (Brief) Implicit Association Test
+      section
+        h2 Oooops! Page not found.
+        p= message
+        p= error.status
+        pre #{error.stack}

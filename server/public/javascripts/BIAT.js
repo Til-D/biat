@@ -107,6 +107,7 @@ const ATTITUDE_NEG = 'Bad';
 const STIMULUS_TYPE_ATTRIBUTE = 'attribute';
 const STIMULUS_TYPE_ATTITUDE = 'attitude';
 const BLOCKS_PER_BIAT = 4;
+const IMG_PATH = 'images/';
 
 var biatActive = false;
 var spacekeyActive = false;
@@ -152,8 +153,9 @@ var currentblocknumber = 0;     // stores the current block number
 var totalblockcount = 0;        // counts the total blocks run
 var percentcorrect = 0;         // the overall percent correct score of initial responses of test trials of D-score qualifying latencies
 
-var warmup_round_enabled = false; //activates Flowers vs. Insects training round
+var warmup_round_enabled = true; //activates Flowers vs. Insects training round
 var pre_study_mode = false;
+var finished_page = '/mturk/grbs';
 
 var settings;
 
@@ -190,41 +192,42 @@ var settings;
 // </expt>
 
 // Note: Put stimuli key (i.e., title) in the first array element. > not a good idea (Tilman)
-const STIMULI = {
+// const STIMULI = {
 
-    // familiarization run
-    "Asian": ["Curry", "Karate", "Beijing", "Sony"], //"Ramen"
-    "American": ["Burger", "NFL", "Boston", "Microsoft"], //"Hollywood"
+//     // familiarization run
+//     "Asian": ["Curry", "Karate", "Beijing", "Sony"], //"Ramen"
+//     "American": ["Burger", "NFL", "Boston", "Microsoft"], //"Hollywood"
 
-    "Liberal": ["LGBTQ", "Multiculturalism", "Equality", "Progressive"], // does this work in Australia? 
-    "Conservative": ["Tradition", "Identity", "Borders", "Religion"], // "Patriotism"
+//     "Progressive": ["LGBTQ", "Multiculturalism", "Equality", "Opportunity"], // does this work in Australia? 
+//     "Conservative": ["Tradition", "Stability", "Patriotism", "Responsibility"], // "Patriotism"
 
-    "Globalisation": ["Travel", "Markets", "Diversity", "Wealth"],
+//     "Globalisation": ["Travel", "Markets", "Diversity", "Wealth"],
 
-    // Feminism / anti-feminism stimuli need more work
-    "Feminism": ["Empowerment", "Oppression", "Equality", "Women's rights"], // "Harassment"
-    "Veganism": ["Greens", "Tofu", "Produce", "Salad"], 
+//     // Feminism / anti-feminism stimuli need more work
+//     "Feminism": ["Empowerment", "Liberation", "Equality", "Progressive"], // "Harassment"
+//     "Anti-feminism": ["Masculinity", "Housewife", "Traditional", "Family"],
 
-    "Anti-feminism": ["Quota", "Housewife", "Traditional", "Feminazi"],
-    "Stoicism": ["Patience", "Calmness", "Acceptance", "Dispassion"], 
+//     "Veganism": ["Greens", "Tofu", "Produce", "Salad"], 
     
-    // Australian / Multiculturalism stimuli need more work. Are not necessarily opposites
-    "Australian": ["Footie", "Kangaroo", "ANZAC", "BBQ"], // > Asian or American
-    "Multiculturalism": ["Diversity", "Immigration", "Variety", "International"],
+//     "Stoicism": ["Patience", "Calmness", "Acceptance", "Dispassion"], 
     
-    // Man-made / Natural cycle climate change stimuli need more work.
-    "Man-made Climate Change": ["Industrialism", "Capitalism", "Coal", "Drilling"], // "Traffic"
-    "Natural Climate Cycles": ["Natural", "Exaggeration", "Cycles", "Patronization"], // "Liberty"
+//     // Australian / Multiculturalism stimuli need more work. Are not necessarily opposites
+//     "Australian": ["Footy", "Kangaroo", "Outback", "Aussie"], // > Asian or American
+//     "Multiculturalism": ["Diversity", "Culture", "Chance", "International"],
+    
+//     // Man-made / Natural cycle climate change stimuli need more work.
+//     "Man-made Climate Change": ["Emissions", "Consumerism", "Coal", "Drilling"], // "Traffic"
+//     "Natural Climate Cycles": ["Natural", "Non-Sense", "Cycles", "Fearmongering"], // "Liberty"
 
-    "Flowers": ["Orchid", "Lily", "Violet", "Daisy"],
-    "Insects": ["Ant", "Locust", "Bee", "Wasp"]
-};
-const WARMUP_PAIR = ['Flowers', 'Insects'];
-const STIMULI_PAIRS = [['Feminism', 'Anti-feminism'], ['Liberal', 'Conservative'], ['Australian', 'Multiculturalism'], ['Man-made Climate Change', 'Natural Climate Cycles']]; //['Feminism', 'Anti-feminism'], ['Australian', 'Multiculturalism'], ['Man-made Climate Change', 'Natural Climate Cycles']];
+//     "Flowers": ["Orchid", "Lily", "Violet", "Daisy"],
+//     "Insects": ["Ant", "Locust", "Bee", "Wasp"]
+// };
+// const WARMUP_PAIR = ['Flowers', 'Insects'];
+// const STIMULI_PAIRS = [['Feminism', 'Anti-feminism'], ['Progressive', 'Conservative'], ['Australian', 'Multiculturalism'], ['Man-made Climate Change', 'Natural Climate Cycles']]; //['Feminism', 'Anti-feminism'], ['Australian', 'Multiculturalism'], ['Man-made Climate Change', 'Natural Climate Cycles']];
 
-var attitudes = {};
-    attitudes[ATTITUDE_POS] = ["Wonderful", "Best", "Superb", "Excellent"]; //"Positive" ["Paradise", "Pleasure", "Cheer", "Wonderful"]
-    attitudes[ATTITUDE_NEG] = ["Awful", "Horrible", "Terrible", "Worst"]; //["Bomb", "Abuse", "Sadness", "Pain"]; //"Negative"
+// var attitudes = {};
+//     attitudes[ATTITUDE_POS] = ["Wonderful", "Best", "Superb", "Excellent"]; //"Positive" ["Paradise", "Pleasure", "Cheer", "Wonderful"]
+//     attitudes[ATTITUDE_NEG] = ["Awful", "Horrible", "Terrible", "Worst"]; //["Bomb", "Abuse", "Sadness", "Pain"]; //"Negative"
 
 // Identity-related IAT
 // "Self": ["I", "Mine", "My", "Myself", "Self"],
@@ -238,12 +241,14 @@ var blockCounter;
 var currentStimulusArray;
 var readyToStart;
 var stimuliPairs;
+var data_object;
 
 var focalKey;
 var nonFocalKey;
 
 var focalStimuli;
 var nonFocalStimuli;
+var img_stimuli_attributes;
 
 var counter;
 var wordListType;
@@ -252,6 +257,10 @@ var correctAttitude;
 
 var prefatoryTrail = true;
 var ongoing = false;
+
+var alldone = false;
+
+var mturkset = typeof mturk !== typeof undefined;
 
 // TODO: Post trial pause ?
 // TODO: BIAT blocks ?
@@ -283,21 +292,13 @@ function initIATs(_settings) {
             stimuliOrder[i]++;
         }
         stimuliOrder.splice(0, 0, 0);
+        warmupInProgress = true;
     }
 
     console.log('-stimuliOrder: ');
     for(var i=0; i<stimuliOrder.length; i++) {
         console.log(i + ': ' + stimuliPairs[stimuliOrder[i]][0] + ' vs ' + stimuliPairs[stimuliOrder[i]][1]);
     }
-
-    data_object = {
-        "blocks_per_biat": BLOCKS_PER_BIAT,
-        "biat_stimuli_pairs": [],
-        "biat_stimuli": {},
-        "focal_latencies": {},
-        "non_focal_latencies": {},
-        "d_scores": {},
-    };
 }
 
 // launches single IAT
@@ -330,15 +331,25 @@ function initIAT (_settings) {
     for(var i=0; i<stimuliOrder.length; i++) {
         console.log(i + ': ' + stimuliPairs[stimuliOrder[i]][0] + ' vs ' + stimuliPairs[stimuliOrder[i]][1]);
     }
+}
+
+function resetDataLog() {
+    console.log('+ resetDataLog()');
 
     data_object = {
         "blocks_per_biat": BLOCKS_PER_BIAT,
         "biat_stimuli_pairs": [],
         "biat_stimuli": {},
-        "focal_latencies": {},
-        "non_focal_latencies": {},
-        "d_scores": {},
+        "focal_latencies": [],
+        "non_focal_latencies": [],
+        "d_score": '',
+        "preferred": '',
+        "magnitude": ''
     };
+
+    if(mturkset) {
+        data_object['mturk']=true;
+    }
 }
 
 function prepareWords(stimuliPair) {
@@ -357,6 +368,7 @@ function prepareWords(stimuliPair) {
     // randomise order or attitudes
     attitudesPositive = attitudes[ATTITUDE_POS];
     attitudesNegative = attitudes[ATTITUDE_NEG];
+
     // attributeStimuli = attributeStimuli1.concat(attributeStimuli2);
 
     // setAttitudeStimuli
@@ -372,6 +384,18 @@ function prepareWords(stimuliPair) {
     // console.log(stimuliPair)
     focalStimuli = shuffle(STIMULI[stimuliPair[0]]);
     nonFocalStimuli = shuffle(STIMULI[stimuliPair[1]]);
+
+    // fill img stimuli array
+    img_stimuli_attributes = [];
+    if(IMAGE_STIMULI.indexOf(stimuliPair[0])>=0) {
+        img_stimuli_attributes = img_stimuli_attributes.concat(STIMULI[stimuliPair[0]]).concat(stimuliPair[0]);
+    }
+    if(IMAGE_STIMULI.indexOf(stimuliPair[1])>=0) {
+        img_stimuli_attributes = img_stimuli_attributes.concat(STIMULI[stimuliPair[1]]).concat(stimuliPair[1]);
+    }
+    // console.log('+ IMAGE STIMULI:');
+    // console.log(img_stimuli_attributes);
+    
 
     // console.log('stimulus collection ' + focalKey + ':');
     // console.log(focalStimuli);
@@ -431,33 +455,48 @@ function prepareWords(stimuliPair) {
 }
 
 const STATUS_COMPLETE = 'complete';			// indicates complete dataset on server
-const STATUS_INCOMPLETE = 'incomplete';
-const VERSION = '1.1'; 						// to keep track of changes affecting log file format
+const STATUS_INCOMPLETE = 'incomplete';     
+// const VERSION = '2.0'; 						// to keep track of changes affecting log file format
 
 // *********************
 // SCREEN Management
 // *********************
 
 function showIntroduction() {
+    console.log('+ showIntroduction()');
     $(attributeStimuliCategory).text(focalKey);
     $(attitudeStimuliCategory).text(ATTITUDE_POS);
 
     // Set first instructions
-    var instructions = "In this task, you will be instructed to <b>press the key 'K' for '" + focalKey.toUpperCase() + "'</b> <br/> relating to words and items from one specific category, either '" + ATTITUDE_POS + "' or '" + ATTITUDE_NEG + "'. <b>The key 'D' on the left is used for words representing '" + nonFocalKey.toUpperCase() + "'</b> and items from the other of those categories. The first couple of blocks help you get used to the task format. Classify items as quickly as you can while making as few mistakes as possible. Going too slow or making too many mistakes will result in an uninterpretable score. It is OK to make an occasional mistake. If you press an incorrect key you will see a red 'X'. Rapidly correct the error by pressing the other key. <br /> <br /> <b>Press the spacebar to continue.</b>";
+    var instructions = "In this task, you will be instructed to <b>press the key 'K'</b> on your keyboard for all nouns or images representing <b>'" + focalKey.toUpperCase() + "'</b> and attitudes relating to <b>'" + ATTITUDE_POS + "'</b>. The <b>key 'D' on the left</b> is used for words representing <b>'" + nonFocalKey.toUpperCase() + "'</b> and attributes from <b>any other</b> category or attitude. You will go through <b>a total of " + (BLOCKS_PER_BIAT+1) + " blocks</b>. The first block will help you get used to the task format. Classify items as quickly as you can while making as few mistakes as possible. Going too slow or making too many mistakes will result in an uninterpretable score. It is OK to make an occasional mistake. If you press an incorrect key you will see a red 'X'. Rapidly correct the error by pressing <b>the other key</b>. <br /> <br /> <b>Press the spacebar to continue.</b>";
+    $('.step_BIAT').show();
     $(BIAT_instructions).html(instructions);
     $(BIAT_instructions).show();
     spacekeyActive = true;
 }
 
 function showInstructions() {
-    $(attributeStimuliCategory).html(focalKey.toUpperCase() + "<br />" + focalStimuli.join(', '));
+    console.log('showInstructions()');
+    var names;
+    if(isImageStimulus(focalKey)) {
+        var items = [];
+        for(var i=0; i<focalStimuli.length; i++) {
+            items.push(focalStimuli[i]['name']);
+        }
+        names = items.join(', ');
+    } else {
+        names = focalStimuli.join(', ');
+    }
+    $(attributeStimuliCategory).html(focalKey.toUpperCase() + "<br />" + names);
     $(attitudeStimuliCategory).html(ATTITUDE_POS.toUpperCase() + "<br />" + attitudesPositive.join(', '));
 
-    var instructions = "Press the right 'K' key on your keyboard for " + focalKey.toUpperCase() + " or " + ATTITUDE_POS.toUpperCase() + ". <br /> Press the left 'D' key on your keyboard for anything else.<br /><br />Go as fast as you can.<br /><br />";
+    var instructions = "This is block " + (blockCounter+1) + " out of " + (BLOCKS_PER_BIAT+1) + ".<br /><br />";
+    instructions += " Press the right 'K' key on your keyboard for " + focalKey.toUpperCase() + " or " + ATTITUDE_POS.toUpperCase() + ". <br /> Press the left 'D' key on your keyboard for anything else.<br /><br />Go as fast as you can.<br /><br />";
     if(trainingInProgress) {
-        instructions += "<p>The first round is a training round.</p>";
+        instructions += "<p>This first round is a training round.</p>";
     }
     instructions += '<b>Press the space bar to begin.</b>';
+    $('.step_BIAT').show();
     $(BIAT_instructions).html(instructions);
     $(BIAT_instructions).show();
     spacekeyActive = true;
@@ -466,19 +505,25 @@ function showInstructions() {
 }
 
 function showFinishScreen() {
-    console.log('--showFinishScreen()');
+    console.log('+ showFinishScreen()');
 
     // var scoreStatement = "Your BIAT score (D) was " + d + ", which suggests " + magnitude + " automatic preference for " + preferred + " compared to " + notpreferred + ".";
     // console.log(scoreStatement)
 
-    var instructions = "Congratulations! You have made it through all assessments. Your score would be displayed here if implemented.";
-    $(BIAT_instructions).html(instructions);
-    $(BIAT_instructions).show();
+    // var instructions = "Congratulations! You have made it through all assessments. Your score would be displayed here if implemented.";
+    // $(BIAT_instructions).html(instructions);
+    // $(BIAT_instructions).show();
+    $(".step_BIAT").hide();
+    $(".step_pre_study_thanks").show();
 
 }
 
+function showMturkFinishScreen() {
+    window.location.href = finished_page + '?pId=' + settings['participant_id'];
+}
+
 function showWarmupFinishScreen() {
-    console.log('--showWarmupFinishScreen()');
+    console.log('+ showWarmupFinishScreen()');
 
     $(".step_BIAT").hide();
     $(".alert").hide();
@@ -486,6 +531,8 @@ function showWarmupFinishScreen() {
 }
 
 function showBIATPairEvaluation() {
+
+    calculateScore();
 
     focalKey = stimuliPairs[stimuliOrder[stimulusIndex-1]][0];
     nonFocalKey = stimuliPairs[stimuliOrder[stimulusIndex-1]][1];
@@ -501,18 +548,51 @@ function showBIATPairEvaluation() {
     $('.stimulus_pair').html(getStimulusKeys());
 
     $('.attribute_focal_category').html(focalKey);
-    $('.attribute_focal_stimuli').html(focalStimuli.join(', '));
 
+    var names;
+    if(isImageStimulus(focalKey)) {
+        var items = [];
+        for(var i=0; i<focalStimuli.length; i++) {
+            items.push(focalStimuli[i]['name']);
+        }
+        names = items.join(', ');
+    } else {
+        names = focalStimuli.join(', ');
+    }
+    $('.attribute_focal_stimuli').html(names);
+
+    if(isImageStimulus(nonFocalKey)) {
+        var items = [];
+        for(var i=0; i<nonFocalStimuli.length; i++) {
+            items.push(nonFocalStimuli[i]['name']);
+        }
+        names = items.join(', ');
+    } else {
+        names = nonFocalStimuli.join(', ');
+    }
     $('.attribute_nonfocal_category').html(nonFocalKey);
-    $('.attribute_nonfocal_stimuli').html(nonFocalStimuli.join(', '));
+    $('.attribute_nonfocal_stimuli').html(names);
 
     //init likert-style scale
     $(".likert").slider({
         max: 7,
         min: 1,
         step: 1,
-        value: 1
+        value: 4,
+        slide:function(event,ui) {
+            console.log('slider moved: log this to see whether user has consciously set a value');
+        }
     });
+
+    //reset text fields
+    $('#focal_blacksheep').val('');
+    $('#focal_wishlist').val('');
+    $('#nonfocal_blacksheep').val('');
+    $('#nonfocal_wishlist').val('');
+    $('#feedback_BIAT_pairs').val('');
+
+    $('#attribute_self_assessment').attr('data-focalkey', focalKey);
+    $('#attribute_self_assessment').attr('data-nonfocalkey', nonFocalKey);
 
     $('.pre_study_evaluation').show();   
 
@@ -583,6 +663,7 @@ function initBIAT(stimulusA, stimulusB, training=false) {
             data_object['biat_stimuli'][getStimulusKeys()] = [currentStimulusArray];
         }
     }
+    data_object['biat_start_ts'] = Date.now();
     // data_object['biat_stimuli_pairs'].push(currentStimulusArray);
 }
 
@@ -595,23 +676,34 @@ function startBIAT() {
     $(attitudeStimuliCategory).html(ATTITUDE_POS.toUpperCase())
 
     biatActive = true;
+    readyToStart = false;
     counter = -1;
     nextWord();
 }
 
 function nextWord() {
 
-    console.log('--nextWord()');
+    console.log('+ nextWord()');
     counter+=1;
 
+    $(BIAT_img_stimulus).hide();
+    $(BIAT_word).hide();
     $(".alert").hide();
 
     if(counter<currentStimulusArray.length) {
 
         var next = currentStimulusArray[counter];
 
-        $(BIAT_word).text(currentStimulusArray[counter]);
-        $(BIAT_word).show();
+        if(isImageStimulus(currentStimulusArray[counter])) {
+            var imgPath = IMG_PATH + currentStimulusArray[counter]['img'];
+            console.log('-loading img: ' + imgPath);
+            $(BIAT_img_stimulus).attr('src', imgPath);
+            $(BIAT_img_stimulus).show();
+        } else {
+            $(BIAT_word).text(currentStimulusArray[counter]);
+            $(BIAT_word).show();
+        }
+
         start = new Date();
 
         $('#BIAT_word').removeClass();
@@ -627,8 +719,8 @@ function nextWord() {
         console.log('+ ' + next);
     } else {
 
-        $(BIAT_word).hide();
         biatActive = false;
+        data_object['biat_finished_ts'] = Date.now();
         nextBlock();
 
     }
@@ -636,100 +728,93 @@ function nextWord() {
 }
 
 function launchIATIntroduction() {
+    console.log(' + launchIATIntroduction()');
 
-    $(".step_BIAT").show();    
-
-    if(warmup_round_enabled || warmupInProgress) { 
-        
-        warmupInProgress = true;
-        
-        var training = false
-        if(pre_study_mode) {
-            training = true;
-        }
-
-        initBIAT(stimuliPairs[stimuliOrder[stimulusIndex]][0], stimuliPairs[stimuliOrder[stimulusIndex]][1], training=training);
-        showIntroduction(); 
-        stimulusIndex++;
-
-    } else {
-        nextBlock();
-    }
-
+    nextBlock();
 }
 
 // manages BIAT blocks
 function nextBlock() {
 
     blockCounter++;
-    console.log('--nextBlock(): ' + blockCounter);
+    console.log('+ nextBlock(): (blockCounter: ' + blockCounter + ', warmupInProgress: ' + warmupInProgress + ', pre_study_mode: ' + pre_study_mode + ')' );
 
-    console.log(warmupInProgress);
-    console.log(pre_study_mode);
+    // if(warmupInProgress && pre_study_mode) { //pre_study warmup done
 
-    if(warmupInProgress && pre_study_mode) { //pre_study warmup done
+    //     // remove warmup pair from stimuli array
+    //     stimuliPairs.shift();
+    //     spacekeyActive = false;
+    //     showWarmupFinishScreen();
 
-        // remove warmup pair from stimuli array
-        stimuliPairs.shift();
-        spacekeyActive = false;
-        showWarmupFinishScreen();
+    // } else {
 
-    } else {
+    // warmupInProgress = false;
 
-        warmupInProgress = false;
+    if(blockCounter==0) { // init training block
 
-        if(blockCounter==0) { // init training block
+        resetDataLog();
+        initBIAT(stimuliPairs[stimuliOrder[stimulusIndex]][0], stimuliPairs[stimuliOrder[stimulusIndex]][1], training=true);
 
-            initBIAT(stimuliPairs[stimuliOrder[stimulusIndex]][0], stimuliPairs[stimuliOrder[stimulusIndex]][1], training=true);
+        showIntroduction();
+        // if(pre_study_mode) {
+        //     showIntroduction();
+        // } else {
+        //     showInstructions();
+        // }
 
-            if(pre_study_mode) {
-                showIntroduction();
-            } else {
-                showInstructions();
-            }
+    } else if(blockCounter <= BLOCKS_PER_BIAT) {
 
-        } else if(blockCounter <= BLOCKS_PER_BIAT) {
+        if(!trainingInProgress && !warmupInProgress) {
+            write_data_to_server(settings, data_object, STATUS_INCOMPLETE);
+        }
 
-            if(!trainingInProgress) {
-                write_data_to_server(settings, data_object, STATUS_INCOMPLETE);
-            }
+        if(blockCounter % 2 == 0) { 
+            initBIAT(stimuliPairs[stimuliOrder[stimulusIndex]][1], stimuliPairs[stimuliOrder[stimulusIndex]][0], training=false);
+        } else { 
+            initBIAT(stimuliPairs[stimuliOrder[stimulusIndex]][0], stimuliPairs[stimuliOrder[stimulusIndex]][1], training=false);
+        }
+            
+        showInstructions(); 
 
-            if(blockCounter % 2 == 0) { //even = non-focal + good
-                initBIAT(stimuliPairs[stimuliOrder[stimulusIndex]][1], stimuliPairs[stimuliOrder[stimulusIndex]][0], training=false);
-            } else { //uneven = non-focal + good
-                initBIAT(stimuliPairs[stimuliOrder[stimulusIndex]][0], stimuliPairs[stimuliOrder[stimulusIndex]][1], training=false);
-            }
-                
-            showInstructions(); 
+    } else { //next stimulus
 
-        } else { //next stimulus
+        stimulusIndex++;
+        if(stimulusIndex < stimuliOrder.length) {
 
-            stimulusIndex++;
-            if(stimulusIndex < stimuliOrder.length) {
-
-                write_data_to_server(settings, data_object, STATUS_COMPLETE);
-                trainingInProgress = false;
-                initBIAT(stimuliPairs[stimuliOrder[stimulusIndex]][0], stimuliPairs[stimuliOrder[stimulusIndex]][1], training=true);
-                blockCounter = -1;
-                showInstructions(); 
-                
-            } else {
-                // Todo: FINISH Screen
-                console.log('all BIATS finished');
+            // trainingInProgress = false;
+            // initBIAT(stimuliPairs[stimuliOrder[stimulusIndex]][0], stimuliPairs[stimuliOrder[stimulusIndex]][1], training=true);
+            blockCounter = -1;
+            
+            // TODO: show survey
+            if(mturkset && !warmupInProgress) {
                 spacekeyActive = false;
-                
                 calculateScore();
-                write_data_to_server(settings, data_object, STATUS_COMPLETE);
-
-                if(pre_study_mode) {
-
-                    showBIATPairEvaluation();
-
-                } else {
-
-                    showFinishScreen();
-
+                if(!warmupInProgress) {
+                    write_data_to_server(settings, data_object, STATUS_COMPLETE);
                 }
+                showBIATPairEvaluation();
+            } else {
+                warmupInProgress = false;
+                nextBlock();
+            }
+            // showInstructions(); 
+            
+        } else {
+            // Todo: FINISH Screen
+            console.log('all BIATS finished');
+            spacekeyActive = false;
+            
+            calculateScore();
+            write_data_to_server(settings, data_object, STATUS_COMPLETE);
+
+            if(pre_study_mode || mturkset) {
+
+                alldone = true;
+                showBIATPairEvaluation();
+
+            } else {
+            
+                showFinishScreen();
 
             }
 
@@ -737,18 +822,20 @@ function nextBlock() {
 
     }
 
+    // }
+
     if(!trainingInProgress) {
         //init data_object
         data_object['biat_stimuli_pairs'].push(getStimulusKeys());
-        if(!data_object['focal_latencies'][getStimulusKeys()]) {
-            data_object['focal_latencies'][getStimulusKeys()] = {};
-        }
-        if(!data_object['non_focal_latencies'][getStimulusKeys()]) {
-            data_object['non_focal_latencies'][getStimulusKeys()] = {};
-        }
-        if(!data_object['d_scores'][getStimulusKeys()]) {
-            data_object['d_scores'][getStimulusKeys()] = {};
-        }
+        // if(!data_object['focal_latencies'][getStimulusKeys()]) {
+        //     data_object['focal_latencies'][getStimulusKeys()] = {};
+        // }
+        // if(!data_object['non_focal_latencies'][getStimulusKeys()]) {
+        //     data_object['non_focal_latencies'][getStimulusKeys()] = {};
+        // }
+        // if(!data_object['d_scores'][getStimulusKeys()]) {
+        //     data_object['d_scores'][getStimulusKeys()] = {};
+        // }
 
     } else {
         console.log('training in progress: no logging');
@@ -806,55 +893,140 @@ function calculateLatency() {
 
 function calculateScore() {
 
-    console.log('--calculateScore()');
+    console.log('+ calculateScore()');
 
-    A1m = A1sum / A1n;
-    A2m = A2sum / A2n;
-    B1m = B1sum / B1n;
-    B2m = B2sum / B2n;
-    A1sd = Math.sqrt((A1ss - (A1n * (A1m * A1m))) / (A1n - 1));
-    A2sd = Math.sqrt((A2ss - (A2n * (A2m * A2m))) / (A2n - 1));
-    B1sd = Math.sqrt((B1ss - (B1n * (B1m * B1m))) / (B1n - 1));
-    B2sd = Math.sqrt((B2ss - (B2n * (B2m * B2m))) / (B2n - 1));
+    // compute the standard deviation of all latencies (across block 1 and 2), SD.
+    var s_pairs = data_object['biat_stimuli_pairs'],
+        all_latencies,
+        standard_dev,
+        mean_condition_1,
+        mean_condition_2,
+        d_score,
+        condition_1_latencies = [], //hypothesis
+        condition_2_latencies = [], //anti-thesis
+        preferred,
+        non_preferred;
 
-    sd1 = Math.sqrt((((A1n - 1) * (A1sd * A1sd) + (B1n - 1) * (B1sd * B1sd)) + ((A1n + B1n) * ((A1m - B1m) * (A1m - B1m)) / 4)) / (A1n + B1n - 1));
-    sd2 = Math.sqrt((((A2n - 1) * (A2sd * A2sd) + (B2n - 1) * (B2sd * B2sd)) + ((A2n + B2n) * ((A2m - B2m) * (A2m - B2m)) / 4)) / (A2n + B2n - 1));
-    d1 = (B1m - A1m) / sd1
-    d2 = (B2m - A2m) / sd2
-    // d = if ( parameters.extended ) { (d1+d2) / 2 } else { d1 }
-    d = (d1 + d2) / 2;
+    // for(var i=0; i<data_object['focal_latencies'].length; i++) {
+    //     if(f_latencies){
+    //         f_latencies = f_latencies.concat(data_object['focal_latencies'][i]);
+    //     } else {
+    //         f_latencies = data_object['focal_latencies'][i];
+    //     }
 
-    console.log("A1m " + A1m);
-    console.log("A2m " + A2m);
-    console.log("B1m " + B1m);
-    console.log("B2m " + B2m);
-    console.log("A1sd " + A1sd);
-    console.log("A2sd " + A2sd);
-    console.log("B1sd " + B1sd);
-    console.log("B2sd " + B2sd);
-    console.log("sd1 " + sd1);
-    console.log("sd2 " + sd2);
-    console.log("d1 " + d1);
-    console.log("d2 " + d2);
-    console.log("d " + d);
+    //     if(nf_latencies) {
+    //         nf_latencies = nf_latencies.concat(data_object['non_focal_latencies'][i]);
+    //     } else {
+    //         nf_latencies = data_object['non_focal_latencies'][i];
+    //     }
+    // }
 
-    if (Math.abs(d) > 0.15) {
+    console.log('data_object');
+    console.log(data_object);
+
+    //select all blocks where focals meet hypothesis (i.e., odd blocks (1, 3, ...))
+
+    for(var i=1; i<=data_object['blocks_per_biat']; i++) { //block counter starts with 1, 0=warmup
+        if(i%2==1) {
+            condition_1_latencies = data_object['focal_latencies'][i].concat(data_object['non_focal_latencies'][i]);
+        } else {
+            condition_2_latencies = data_object['focal_latencies'][i].concat(data_object['non_focal_latencies'][i]);
+        }
+    }
+
+    all_latencies = condition_1_latencies.concat(condition_2_latencies);
+    standard_dev = standardDeviation(all_latencies);
+
+    // M1 is the mean of the latencies in condition 1 
+    mean_condition_1 = average(condition_1_latencies);
+
+    // M2 is the mean of the latencies in condition 2 
+    mean_condition_2 = average(condition_2_latencies);
+
+    // Calculate d-score: D=(M2-M1)/SD
+    d_score = (mean_condition_2 - mean_condition_1) / standard_dev;
+
+    console.log('condition_1_latencies');
+    console.log(condition_1_latencies);
+
+    console.log('condition_2_latencies');
+    console.log(condition_2_latencies);
+
+    console.log('all_latencies');
+    console.log(all_latencies);
+
+    console.log('standard_dev: ' + standard_dev);
+
+    console.log('mean_condition_1: ' + mean_condition_1);
+
+    console.log('mean_condition_2: ' + mean_condition_2);
+
+    console.log('d_score: ' + d_score);
+
+    // A1m = A1sum / A1n; //avg latency, block 1
+    // A2m = A2sum / A2n;
+    // B1m = B1sum / B1n;
+    // B2m = B2sum / B2n;
+    // A1sd = Math.sqrt((A1ss - (A1n * (A1m * A1m))) / (A1n - 1));
+    // A2sd = Math.sqrt((A2ss - (A2n * (A2m * A2m))) / (A2n - 1));
+    // B1sd = Math.sqrt((B1ss - (B1n * (B1m * B1m))) / (B1n - 1));
+    // B2sd = Math.sqrt((B2ss - (B2n * (B2m * B2m))) / (B2n - 1));
+
+    // sd1 = Math.sqrt((((A1n - 1) * (A1sd * A1sd) + (B1n - 1) * (B1sd * B1sd)) + ((A1n + B1n) * ((A1m - B1m) * (A1m - B1m)) / 4)) / (A1n + B1n - 1));
+    // sd2 = Math.sqrt((((A2n - 1) * (A2sd * A2sd) + (B2n - 1) * (B2sd * B2sd)) + ((A2n + B2n) * ((A2m - B2m) * (A2m - B2m)) / 4)) / (A2n + B2n - 1));
+    // d1 = (B1m - A1m) / sd1
+    // d2 = (B2m - A2m) / sd2
+    // // d = if ( parameters.extended ) { (d1+d2) / 2 } else { d1 }
+    // d = (d1 + d2) / 2;
+
+    // console.log("A1m " + A1m);
+    // console.log("A2m " + A2m);
+    // console.log("B1m " + B1m);
+    // console.log("B2m " + B2m);
+    // console.log("A1sd " + A1sd);
+    // console.log("A2sd " + A2sd);
+    // console.log("B1sd " + B1sd);
+    // console.log("B2sd " + B2sd);
+    // console.log("sd1 " + sd1);
+    // console.log("sd2 " + sd2);
+    // console.log("d1 " + d1);
+    // console.log("d2 " + d2);
+    // console.log("d " + d);
+
+    magnitude = "little to no";
+    if (Math.abs(d_score) > 0.15) {
         magnitude = "a slight";
-    } else if (Math.abs(d) > 0.35) {
+    }
+    if (Math.abs(d_score) > 0.35) {
         magnitude = "a moderate";
-    } else if (Math.abs(d) >= 0.65) {
+    }
+    if (Math.abs(d_score) >= 0.65) {
         magnitude = "a strong";
-    } else {
-        magnitude = "little to no";
     }
 
-    if (d >= 0.0) {
-        preferred = focalKey;
-        notpreferred = nonFocalKey;
-    } else if (d < 0.0) {
-        preffered = nonFocalKey;
-        notpreferred = focalKey;
+
+    if (d_score >= 0.0) {
+        console.log('FOCAL WINS');
+        preferred = stimuliPairs[stimuliOrder[stimulusIndex-1]][0];; 
+        non_preferred = focalKey = stimuliPairs[stimuliOrder[stimulusIndex-1]][1];;
+    } else { //if (d < 0.0) {
+        console.log('NON_FOCAL WINS');
+        preferred = stimuliPairs[stimuliOrder[stimulusIndex-1]][1];;
+        non_preferred = stimuliPairs[stimuliOrder[stimulusIndex-1]][0];;
     }
+
+    console.log('preferred: ' + preferred);
+    console.log('non_preferred: ' + non_preferred);
+    console.log('magnitude: ' + magnitude);
+
+    data_object["d_score"] = d_score;
+    data_object["preferred"] = preferred;
+    data_object["magnitude"] = magnitude;
+
+    // console.log('final data_object:');
+    // console.log(data_object);
+
+    $('#result').html('Done! You seem to have <strong>' + data_object["magnitude"] + '</strong> preferrence for <strong>' + data_object["preferred"] + '</strong> with a d-score of: ' + round(data_object["d_score"], 2));
 }
 
 // checks current stimulus/attribute and returns whether user classification is correct
@@ -895,6 +1067,18 @@ function isFocal(stimulus) {
 
 }
 
+// checks whether stimuli are images or words
+function isImageStimulus(stimulus) {
+
+    if(img_stimuli_attributes.indexOf(stimulus)>=0) {
+        console.log('+ isImageStimulus(' + stimulus + '): true');
+        return true;
+    } else {
+        console.log('+ isImageStimulus(' + stimulus + '): false');
+        return false;
+    }
+}
+
 // here we go
 $( document ).ready(function() {
 
@@ -926,24 +1110,31 @@ $( document ).ready(function() {
 
                     if(evaluateClassification(KEYCODE_LEFT)) { // correct classification
 
-                        if(!trainingInProgress && !warmupInProgress && counter>=4) { //prefatory trail, no logging
+                        if(!trainingInProgress && counter>=4) { //prefatory trail, no logging
                             
                             // log 
                             var timediff = calculateLatency();
 
                             // console.log('timediff: ' + timediff);
 
-                            if(data_object['non_focal_latencies'][getStimulusKeys()][blockCounter]) {
-                                data_object['non_focal_latencies'][getStimulusKeys()][blockCounter].push(timediff);
+                            // console.log("LULU");
+                            // console.log(data_object['non_focal_latencies']);
+                            if(data_object['non_focal_latencies'][blockCounter]) {
+                                // console.log(blockCounter + ' exists.');
+                                data_object['non_focal_latencies'][blockCounter].push(timediff);
                             } else {
-                                data_object['non_focal_latencies'][getStimulusKeys()][blockCounter] = [timediff];
+                                // console.log(blockCounter + ' not exists.');
+                                data_object['non_focal_latencies'][blockCounter] = [timediff];
                             }
+                            // console.log(data_object['non_focal_latencies']);
+                            // console.log("EXIT LULU");
 
                         }
                         nextWord();
 
                     } else { // incorrect classification
                         
+                        $(".alert").html('X');
                         $(".alert").show();
 
                     }
@@ -956,21 +1147,22 @@ $( document ).ready(function() {
 
                     if(evaluateClassification(KEYCODE_RIGHT)) { // correct classification
 
-                        if(!trainingInProgress && !warmupInProgress && counter>=4) { //prefatory trail, no logging
+                        if(!trainingInProgress && counter>=4) { //prefatory trail, no logging
 
                             // log 
                             var timediff = calculateLatency();
 
-                            if(data_object['focal_latencies'][getStimulusKeys()][blockCounter]) {
-                                data_object['focal_latencies'][getStimulusKeys()][blockCounter].push(timediff);
+                            if(data_object['focal_latencies'][blockCounter]) {
+                                data_object['focal_latencies'][blockCounter].push(timediff);
                             } else {
-                                data_object['focal_latencies'][getStimulusKeys()][blockCounter] = [timediff];
+                                data_object['focal_latencies'][blockCounter] = [timediff];
                             }
                         }
                         nextWord();
 
                     } else { // incorrect classification
                         
+                        $(".alert").html('X');
                         $(".alert").show();
 
                     }

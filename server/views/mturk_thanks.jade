@@ -1,0 +1,35 @@
+doctype html
+html(lang='en')
+  head
+    meta(charset='utf-8')
+    title= title
+    link(rel='stylesheet', href='https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css', integrity='sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T', crossorigin='anonymous')
+    link(rel='stylesheet', href='/jquery-ui-1.12.1.custom/jquery-ui.min.css')
+    link(rel='stylesheet', href='/stylesheets/style.css')
+  body
+    article
+      header
+        h1 (Brief) Implicit Association Test
+      section
+        h2 That's it!
+        .cf
+          p
+            | Thanks for your participation! 
+            br
+            | Please copy the following code to redeem your compensation:
+          p.mturk_code 
+          section.first
+            img.logo_small(src="/images/logo-unimelb.jpg" alt="Logo of The University of Melbourne")
+            p 
+              | For feedback and comments, please
+              br
+              | reach out to us:
+              br
+              a(href='mailto:biat-study@unimelb.edu.au') biat-study@unimelb.edu.au
+
+    script.
+      const survey_code = '!{surveyCode}';
+      var get = {};
+
+    script(src='https://code.jquery.com/jquery-3.4.1.min.js', integrity='sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=', crossorigin='anonymous')
+    script(src='/javascripts/thanks.js')

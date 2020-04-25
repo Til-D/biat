@@ -1,0 +1,52 @@
+statement;dimension;keyedness
+I am the life of the party.;extraversion;+
+I feel little concern for others.;agreeableness;-
+I am always prepared.;conscientiousness;+
+I get stressed out easily.;neuroticism;-
+I have a rich vocabulary.;openness;+
+I don't talk a lot.;extraversion;-
+I am interested in people.;agreeableness;+
+I leave my belongings around.;conscientiousness;-
+I am relaxed most of the time.;neuroticism;+
+I have difficulty understanding abstract ideas.;openness;-
+I feel comfortable around people.;extraversion;+
+I insult people.;agreeableness;-
+I pay attention to details.;conscientiousness;+
+I worry about things.;neuroticism;-
+I have a vivid imagination.;openness;+
+I keep in the background.;extraversion;-
+I sympathize with others' feelings.;agreeableness;+
+I make a mess of things.;conscientiousness;-
+I seldom feel blue.;neuroticism;+
+I am not interested in abstract ideas.;openness;-
+I start conversations.;extraversion;+
+I am not interested in other people's problems.;agreeableness;-
+I get chores done right away.;conscientiousness;+
+I am easily disturbed.;neuroticism;-
+I have excellent ideas.;openness;+
+I have little to say.;extraversion;-
+I have a soft heart.;agreeableness;+
+I often forget to put things back in their proper place.;conscientiousness;-
+I get upset easily.;neuroticism;-
+I do not have a good imagination.;openness;-
+I talk to a lot of different people at parties.;extraversion;+
+I am not really interested in others.;agreeableness;-
+I like order.;conscientiousness;+
+I change my mood a lot.;neuroticism;-
+I am quick to understand things.;openness;+
+I don't like to draw attention to myself.;extraversion;-
+I take time out for others.;agreeableness;+
+I shirk my duties.;conscientiousness;-
+I have frequent mood swings.;neuroticism;-
+I use difficult words.;openness;+
+I don't mind being the center of attention.;extraversion;+
+I feel others' emotions.;agreeableness;+
+I follow a schedule.;conscientiousness;+
+I get irritated easily.;neuroticism;-
+I spend time reflecting on things.;openness;+
+I am quiet around strangers.;extraversion;-
+I make people feel at ease.;agreeableness;+
+I am exacting in my work.;conscientiousness;+
+I often feel blue.;neuroticism;-
+I am full of ideas.;openness;+
+I have responded accurately and honestly.

@@ -1,0 +1,74 @@
+section.step.pre_study_evaluation
+  h2 BIAT Pair Evaluation
+  p#result
+  p
+  section.evaluation
+    .left
+      p How well do you think this tendency fits your actual preference?
+      #attribute_d_score_fit.likert
+
+      p Where do you see yourself between these two concepts?
+      #attribute_self_assessment.likert
+
+      hr
+  p
+    | Thanks for trying out this BIAT on 
+    b
+      span.stimulus_pair
+    | ! Did you encounter some words of which you thought they did not fit? Do you have suggestions for a better choice? Please let us know below.
+  input#focalKey(type='hidden', value='')
+  input#nonFocalKey(type='hidden', value='')
+  input#focalAttributes(type='hidden', value='')
+  input#nonfocalAttributes(type='hidden', value='')
+  section.evaluation
+    h3.attribute_focal_category Focal Category
+    p
+      b Attributes:
+      span.attribute_focal_stimuli
+        | Stimuli...
+        span
+    .left
+      p
+        | How well do you think these attributes fit the category '
+        span.attribute_focal_category
+        | '?
+      #attribute_focal_category_fit.likert
+      if mturk
+        p.input-heading The following attributes were out of place (*):
+      else
+        p.input-heading The following attributes were out of place:
+      input#focal_blacksheep(type='text', placeholder='')
+      if mturk
+        p.input-heading Any suggestions for better attributes (*)?
+      else
+        p.input-heading Any suggestions for better attributes?
+      input#focal_wishlist(type='text', placeholder='')
+  section.evaluation
+    h3.attribute_nonfocal_category Non-focal Category
+    p
+      b Attributes:
+      span.attribute_nonfocal_stimuli Non-Stimuli...
+    .left
+      p
+        | How well do you think these attributes fit the category '
+        span.attribute_nonfocal_category
+        | '?
+      #attribute_nonfocal_category_fit.likert
+      if mturk
+        p.input-heading The following attributes were out of place (*):
+      else
+        p.input-heading The following attributes were out of place:
+      input#nonfocal_blacksheep(type='text', placeholder='')
+      if mturk
+        p.input-heading Any suggestions for better attributes (*)?
+      else
+        p.input-heading Any suggestions for better attributes?
+      input#nonfocal_wishlist(type='text', placeholder='')
+    hr
+    .left
+      h4 Any other comments or feedback?
+      textarea#feedback_BIAT_pairs
+      p
+      | (*) required fields, type 'n.a.' if not applicable.
+  .alert.alert-danger(role='alert') X
+  button.btn-submit Submit

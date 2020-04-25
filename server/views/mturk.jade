@@ -73,26 +73,40 @@ html(lang='en')
         button Start
         // <p class="go_back">or go <a href="#">back to the overview page</a></p>
       section.step.step_pre_study
-        h2= title
+        h2 MTurk: BIAT Pairs
         .cf
           p
+            b
+              | Please only complete this mturk task if you are an English native speaker.
+            br
+            br
             | The implicit association test measures the differential association of two target concepts with an attribute. By measuring the time it takes you to connect concepts and attributes, implicit biases can emerge. Under a concept umbrella, such as 
             i Conservative
             |  vs. 
             i Progressive
-            | , for example, nouns classically associated with each need to be categorized. This pre-study aims at 1) introducing the mechanism of the brief version of the implicit association test (BIAT) and 2) collecting feedback on the word pair associations.
+            | , for example, nouns classically associated with each need to be categorized. This study aims at 1) collecting feedback on the word pair associations and 2) collecting (fully anonymized) ground truth information about general attitudes and personality traits.
             br
             br
-            |                   Thanks for helping out! Feel free to provide some details (optional) and select your BIAT category. If you are interested in participating in the follow-up studies and/or the results of this research, you can leave us your email address.
+            | Please make sure to read the instructions carefully. The test comprises a total of 4 category pairs for each you will be asked to fill in a quick questionnaire. You will find the code to claim your HIT compensation when you have completed all 4 BIATs and filled in a final attitude and personality questionnaire.
+            br
+            br
+            |                   Thanks for helping out! If you are interested in subsequent results of this research, you can leave us your email address.
           section.first
-            h3 For BIAT Newbies:
-            button.btn-warmup(type='button') Warmup Round
-            h3 Topic Selection
-            .input-group.mb-3
-              .input-group-prepend
-                label.input-group-text(for='biat-selection-dropdown') BIAT
-              select#biat-selection-dropdown.custom-select
-                option(selected='') Choose...
+            img.logo(src="/images/logo-unimelb.jpg" alt="Logo of The University of Melbourne")
+            p 
+              | For feedback and comments, please
+              br
+              | reach out to:
+              br
+              a(href='mailto:biat-study@unimelb.edu.au') biat-study@unimelb.edu.au
+            //- h3 For BIAT Newbies:
+            //- button.btn-warmup(type='button') Warmup Round
+            //- h3 Topic Selection
+            //- .input-group.mb-3
+            //-   .input-group-prepend
+            //-     label.input-group-text(for='biat-selection-dropdown') BIAT
+            //-   select#biat-selection-dropdown.custom-select
+            //-     option(selected='') Choose...
             //
               <div class="form-check">
               <input type="checkbox" class="form-check-input" id="warmup-check">
@@ -135,7 +149,6 @@ html(lang='en')
             p#attitudeStimuliCategory.attitudeClass Attitude
           p#BIAT_instructions
           p#BIAT_word
-          img#BIAT_img_stimulus
           .alert.alert-danger(role='alert') X
       
       include includes/pre_study_survey.jade
@@ -214,11 +227,11 @@ html(lang='en')
       const STIMULI= biatConfig['STIMULI'];
       const WARMUP_PAIR= biatConfig['WARMUP_PAIR'];
       const STIMULI_PAIRS= biatConfig['STIMULI_PAIRS'];
-      const IMAGE_STIMULI= biatConfig['IMAGE_STIMULI'];
-      const attitudes= biatConfig['ATTITUDES'];
-      const VERSION= biatConfig['VERSION'];
+      const attitudes = biatConfig['ATTITUDES'];
+      const VERSION = biatConfig['VERSION'];
 
-    block biatsetup
+    script.
+      var mturk = true;
 
     script(src='https://code.jquery.com/jquery-3.4.1.min.js', integrity='sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=', crossorigin='anonymous')
     script(src='https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js', integrity='sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1', crossorigin='anonymous')
@@ -226,4 +239,3 @@ html(lang='en')
     script(src='/jquery-ui-1.12.1.custom/jquery-ui.min.js')
     script(src='/javascripts/BIAT.js')
     script(src='/javascripts/default.js')
-
