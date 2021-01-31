@@ -19,8 +19,8 @@
         "Conservative Media": [{"name": "Breitbart", "img": "breitbart.png"}, {"name": "Daily Mail", "img": "dailymail.png"}, {"name": "Fox", "img": "fox.png"}, {"name": "The Sun", "img": "thesun.png"}],
         "Qualitative": ["Dynamic", "Subjective", "Rich", "Individual"], 
         "Quantitative Research": ["Simplification", "Replicable", "Objective", "Comparable"],
-        "Australian Exp": ["A1", "A2", "A3", "A4"],
-        "Multiculturalism Exp": ["M1", "M2", "M3", "M4"]
+        "Australian Exp": ["a1", "a2", "a3", "a4"],
+        "Multiculturalism Exp": ["m1", "m2", "m3", "m4"]
     },
     "WARMUP_PAIR": ["Flowers", "Insects"],
     "STIMULI_PAIRS":[["Progressive", "Conservative"], ["Asian", "American"], ["Australian Exp", "Multiculturalism Exp"]],
