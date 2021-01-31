@@ -18,10 +18,13 @@
         "Left Media": [{"name": "CNN", "img": "cnn.png"}, {"name": "The Independent", "img": "The-Independent-Logo.png"}, {"name": "The Guardian", "img": "theguardian.png"}, {"name": "The New Yorker", "img": "TheNYer.png"}],
         "Conservative Media": [{"name": "Breitbart", "img": "breitbart.png"}, {"name": "Daily Mail", "img": "dailymail.png"}, {"name": "Fox", "img": "fox.png"}, {"name": "The Sun", "img": "thesun.png"}],
         "Qualitative": ["Dynamic", "Subjective", "Rich", "Individual"], 
-        "Quantitative Research": ["Simplification", "Replicable", "Objective", "Comparable"]
+        "Quantitative Research": ["Simplification", "Replicable", "Objective", "Comparable"],
+        "Australian Exp": ["A1, A2, A3, A4"],
+        "Multiculturalism Exp": ["M1, M2, M3, M4"]
     },
     "WARMUP_PAIR": ["Flowers", "Insects"],
-    "STIMULI_PAIRS":[["Progressive", "Conservative"], ["Qualitative", "Quantitative Research"]],
+    "STIMULI_PAIRS":[["Progressive", "Conservative"], ["Asian", "American"], ["Australian Exp", "Multiculturalism Exp"]],
+    // "STIMULI_PAIRS":[["Progressive", "Conservative"], ["Asian", "American"], ["Australian", "Multiculturalism"], ["Feminism", "Anti-feminism"], ["Man-made Climate Change", "Natural Climate Cycles"]],
     "IMAGE_STIMULI": ["Left Media", "Conservative Media"],
     "ATTITUDES": {
         "Good": ["Wonderful", "Best", "Superb", "Excellent"],
