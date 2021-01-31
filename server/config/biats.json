@@ -24,7 +24,6 @@
     },
     "WARMUP_PAIR": ["Flowers", "Insects"],
     "STIMULI_PAIRS":[["Progressive", "Conservative"], ["Asian", "American"], ["Australian Exp", "Multiculturalism Exp"]],
-    // "STIMULI_PAIRS":[["Progressive", "Conservative"], ["Asian", "American"], ["Australian", "Multiculturalism"], ["Feminism", "Anti-feminism"], ["Man-made Climate Change", "Natural Climate Cycles"]],
     "IMAGE_STIMULI": ["Left Media", "Conservative Media"],
     "ATTITUDES": {
         "Good": ["Wonderful", "Best", "Superb", "Excellent"],
