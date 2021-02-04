@@ -23,7 +23,7 @@
         "Multiculturalism Exp": ["m1", "m2", "m3", "m4"]
     },
     "WARMUP_PAIR": ["Flowers", "Insects"],
-    "STIMULI_PAIRS":[["Progressive", "Conservative"], ["Asian", "American"], ["Australian Exp", "Multiculturalism Exp"]],
+    "STIMULI_PAIRS":[["Asian", "American"], ["Australian Exp", "Multiculturalism Exp"]],
     "IMAGE_STIMULI": ["Left Media", "Conservative Media"],
     "ATTITUDES": {
         "Good": ["Wonderful", "Best", "Superb", "Excellent"],
