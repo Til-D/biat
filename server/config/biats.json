@@ -6,6 +6,8 @@
         "American": ["Burger", "NFL", "Boston", "Microsoft"],
         "Progressive": ["LGBTQ", "Multiculturalism", "Equality", "Opportunity"],
         "Conservative": ["Tradition", "Stability", "Patriotism", "Responsibility"],
+        "Progressive (Exp)": ["P1", "P2", "P3", "P4"],
+        "Conservative (Exp)": ["C1", "C2", "C3", "C4"],
         "Globalisation": ["Travel", "Markets", "Diversity", "Wealth"],
         "Feminism": ["Empowerment", "Liberation", "Equality", "Progressive"],
         "Anti-feminism": ["Inequality", "Housewife", "Traditional", "Obedience"],
@@ -16,7 +18,7 @@
         "Man-made Climate Change": ["Emissions", "Consumerism", "Coal", "Drilling"],
         "Natural Climate Cycles": ["Natural", "Non-Sense", "Cycles", "Weather"],
         "Man-made Climate Change (Exp)": ["Emissions", "Coal", "Fossil Fuels", "Greenhouse Gas"],
-        "Natural Climate Cycles (Exp)": ["Clouds", "Rain", "Wind", "Sunlight"],
+        "Natural Climate Cycles (Exp)": ["Weather", "Drought", "Floods", "Heatwave"],
         "Left Media": [{"name": "CNN", "img": "cnn.png"}, {"name": "The Independent", "img": "The-Independent-Logo.png"}, {"name": "The Guardian", "img": "theguardian.png"}, {"name": "The New Yorker", "img": "TheNYer.png"}],
         "Conservative Media": [{"name": "Breitbart", "img": "breitbart.png"}, {"name": "Daily Mail", "img": "dailymail.png"}, {"name": "Fox", "img": "fox.png"}, {"name": "The Sun", "img": "thesun.png"}],
         "Qualitative": ["Dynamic", "Subjective", "Rich", "Individual"], 
@@ -25,7 +27,7 @@
         "Multiculturalism Exp": ["Cultural Diversity", "Cosmopolitan", "Dynamic", "Colored"]
     },
     "WARMUP_PAIR": ["Flowers", "Insects"],
-    "STIMULI_PAIRS":[["Asian", "American"], ["Man-made Climate Change (Exp)", "Natural Climate Cycles (Exp)"]],
+    "STIMULI_PAIRS":[["Asian", "American"], ["Progressive (Exp)", "Conservative (Exp)"]],
     "IMAGE_STIMULI": ["Left Media", "Conservative Media"],
     "ATTITUDES": {
         "Good": ["Wonderful", "Best", "Superb", "Excellent"],
