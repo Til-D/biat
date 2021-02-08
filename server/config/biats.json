@@ -16,7 +16,7 @@
         "Man-made Climate Change": ["Emissions", "Consumerism", "Coal", "Drilling"],
         "Natural Climate Cycles": ["Natural", "Non-Sense", "Cycles", "Weather"],
         "Man-made Climate Change (Exp)": ["Emissions", "Coal", "Fossil Fuels", "Greenhouse Gas"],
-        "Natural Climate Cycles (Exp)": ["Weather", "Drought", "Floods", "Heatwave"],
+        "Natural Climate Cycles (Exp)": ["Clouds", "Rain", "Wind", "Sunlight"],
         "Left Media": [{"name": "CNN", "img": "cnn.png"}, {"name": "The Independent", "img": "The-Independent-Logo.png"}, {"name": "The Guardian", "img": "theguardian.png"}, {"name": "The New Yorker", "img": "TheNYer.png"}],
         "Conservative Media": [{"name": "Breitbart", "img": "breitbart.png"}, {"name": "Daily Mail", "img": "dailymail.png"}, {"name": "Fox", "img": "fox.png"}, {"name": "The Sun", "img": "thesun.png"}],
         "Qualitative": ["Dynamic", "Subjective", "Rich", "Individual"], 
