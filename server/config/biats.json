@@ -11,6 +11,8 @@
         "Globalisation": ["Travel", "Markets", "Diversity", "Wealth"],
         "Feminism": ["Empowerment", "Liberation", "Equality", "Progressive"],
         "Anti-feminism": ["Inequality", "Housewife", "Traditional", "Obedience"],
+        "Feminism (Exp)": ["F1", "F2", "F3", "F4"],
+        "Anti-feminism (Exp)": ["A1", "A2", "A3", "A4"],
         "Veganism": ["Greens", "Tofu", "Produce", "Salad"], 
         "Stoicism": ["Patience", "Calmness", "Acceptance", "Dispassion"], 
         "Australian": ["Footy", "Kangaroo", "Outback", "Aussie"],
@@ -27,7 +29,7 @@
         "Multiculturalism Exp": ["Cultural Diversity", "Cosmopolitan", "Dynamic", "Colored"]
     },
     "WARMUP_PAIR": ["Flowers", "Insects"],
-    "STIMULI_PAIRS":[["Asian", "American"], ["Progressive (Exp)", "Conservative (Exp)"]],
+    "STIMULI_PAIRS":[["Asian", "American"], ["Feminism (Exp)", "Anti-feminism (Exp)"]],
     "IMAGE_STIMULI": ["Left Media", "Conservative Media"],
     "ATTITUDES": {
         "Good": ["Wonderful", "Best", "Superb", "Excellent"],
