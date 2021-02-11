@@ -25,11 +25,11 @@
         "Conservative Media": [{"name": "Breitbart", "img": "breitbart.png"}, {"name": "Daily Mail", "img": "dailymail.png"}, {"name": "Fox", "img": "fox.png"}, {"name": "The Sun", "img": "thesun.png"}],
         "Qualitative": ["Dynamic", "Subjective", "Rich", "Individual"], 
         "Quantitative Research": ["Simplification", "Replicable", "Objective", "Comparable"],
-        "Australian Exp": ["Colonial Heritage", "Anzac", "Whiteness", "Cricket"],
-        "Multiculturalism Exp": ["Cultural Diversity", "Cosmopolitan", "Dynamic", "Colored"]
+        "Australian (Exp)": ["Colonial Heritage", "Anzac", "Whiteness", "Cricket"],
+        "Multiculturalism (Exp)": ["Cultural Diversity", "Cosmopolitan", "Dynamic", "Colored"]
     },
     "WARMUP_PAIR": ["Flowers", "Insects"],
-    "STIMULI_PAIRS":[["Asian", "American"], ["Feminism (Exp)", "Anti-feminism (Exp)"]],
+    "STIMULI_PAIRS":[["Australian (Exp)", "Multiculturalism (Exp)"], ["Feminism (Exp)", "Anti-feminism (Exp)"], ["Progressive (Exp)", "Conservative (Exp)"], ["Man-made Climate Change (Exp)", "Natural Climate Cycles (Exp)"]],
     "IMAGE_STIMULI": ["Left Media", "Conservative Media"],
     "ATTITUDES": {
         "Good": ["Wonderful", "Best", "Superb", "Excellent"],
