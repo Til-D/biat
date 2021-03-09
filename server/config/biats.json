@@ -29,7 +29,7 @@
         "Multiculturalism (Exp)": ["Cultural Diversity", "Cosmopolitan", "Dynamic", "Colored"]
     },
     "WARMUP_PAIR": ["Flowers", "Insects"],
-    "STIMULI_PAIRS":[["Australian (Exp)", "Multiculturalism (Exp)"], ["Feminism (Exp)", "Anti-feminism (Exp)"], ["Progressive (Exp)", "Conservative (Exp)"], ["Man-made Climate Change (Exp)", "Natural Climate Cycles (Exp)"]],
+    "STIMULI_PAIRS":[["Flowers", "Insects"], ["Asian", "American"]],
     "IMAGE_STIMULI": ["Left Media", "Conservative Media"],
     "ATTITUDES": {
         "Good": ["Wonderful", "Best", "Superb", "Excellent"],
