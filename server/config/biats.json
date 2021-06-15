@@ -18,7 +18,7 @@
         "Australian": ["Footy", "Kangaroo", "Outback", "Aussie"],
         "Multiculturalism": ["Diversity", "Culture", "Migrant", "International"],
         "Man-made Climate Change (A)": ["Emissions", "Consumerism", "Coal", "Drilling"],
-        "Natural Climate Cyclesh (A)": ["Natural", "Non-Sense", "Cycles", "Weather"],
+        "Natural Climate Cycles (A)": ["Natural", "Non-Sense", "Cycles", "Weather"],
         "Man-made Climate Change (B)": ["Emissions", "Coal", "Fossil Fuels", "Greenhouse Gas"],
         "Natural Climate Cycles (B)": ["Weather", "Drought", "Floods", "Heatwave"],
         "Left Media": [{"name": "CNN", "img": "cnn.png"}, {"name": "The Independent", "img": "The-Independent-Logo.png"}, {"name": "The Guardian", "img": "theguardian.png"}, {"name": "The New Yorker", "img": "TheNYer.png"}],
@@ -29,7 +29,7 @@
         "Multiculturalism (Exp)": ["Cultural Diversity", "Cosmopolitan", "Dynamic", "Colored"]
     },
     "WARMUP_PAIR": ["Flowers", "Insects"],
-    "STIMULI_PAIRS":[["Man-made Climate Change (A)", "Natural Climate Cyclesh (A)"], ["Man-made Climate Change (B)", "Natural Climate Cyclesh (B)"]],
+    "STIMULI_PAIRS":[["Man-made Climate Change (A)", "Natural Climate Cycles (A)"], ["Man-made Climate Change (B)", "Natural Climate Cycles (B)"]],
     "IMAGE_STIMULI": ["Left Media", "Conservative Media"],
     "ATTITUDES": {
         "Good": ["Wonderful", "Best", "Superb", "Excellent"],
