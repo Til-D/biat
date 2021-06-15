@@ -29,7 +29,7 @@
         "Multiculturalism (Exp)": ["Cultural Diversity", "Cosmopolitan", "Dynamic", "Colored"]
     },
     "WARMUP_PAIR": ["Flowers", "Insects"],
-    "STIMULI_PAIRS":[["Man-made Climate Change (A)", "Natural Climate Cyclesh (B)"], ["Man-made Climate Change (B)", "Natural Climate Cyclesh (B)"]],
+    "STIMULI_PAIRS":[["Man-made Climate Change (A)", "Natural Climate Cyclesh (A)"], ["Man-made Climate Change (B)", "Natural Climate Cyclesh (B)"]],
     "IMAGE_STIMULI": ["Left Media", "Conservative Media"],
     "ATTITUDES": {
         "Good": ["Wonderful", "Best", "Superb", "Excellent"],
