@@ -29,7 +29,7 @@
         "Multiculturalism (B)": ["Cultural Diversity", "Cosmopolitan", "Dynamic", "Colored"]
     },
     "WARMUP_PAIR": ["Flowers", "Insects"],
-    "STIMULI_PAIRS":[["Australian (A)", "Multiculturalism (A)", "Australian (B)", "Multiculturalism (B)"]],
+    "STIMULI_PAIRS":[["Asian", "American"]],
     "IMAGE_STIMULI": ["Left Media", "Conservative Media"],
     "ATTITUDES": {
         "Good": ["Wonderful", "Best", "Superb", "Excellent"],
